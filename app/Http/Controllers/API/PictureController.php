@@ -1,0 +1,74 @@
+<?php
+
+namespace App\Http\Controllers\API;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
+use App\Models\Picture;
+use Illuminate\Http\Request;
+
+class PictureController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+    public function index(Request $request)
+    {
+        // La validation de données
+        $this->validate($request, [
+            'place' => 'required|max:100',
+        ]);
+
+        $start = (isset($request->start)) ? strtotime($request->start) : strtotime(date('Y-m-d 00:00:00'));
+        $end = (isset($request->end)) ? strtotime($request->end) : strtotime(date('Y-m-d 23:59:59'));
+
+        return response()->json(Picture::where('place', $request->place)->where('date', '>=', $start)->where('date', '<=', $end)->orderBy('date', 'ASC')->get(), 200);
+
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'place' => 'required|max:100',
+            'date'  => 'required|string|size:19',
+            'picture' => 'required|image|mimes:jpg',
+        ]);
+
+        $picture = Picture::create([
+            'place' => $request->place,
+            'date' => strtotime($request->date),
+            'info' => []
+        ]);
+
+        Storage::putFileAs($picture->place, $request->file('picture'), $picture->filename);
+
+        return response()->json($picture, 201);
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(Picture $picture)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, Picture $picture)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Picture $picture)
+    {
+        //
+    }
+}
