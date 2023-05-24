@@ -3,7 +3,9 @@
 /public/build
 /public/hot
 /public/storage
-/storage
+/storage/app/*
+/storage/framework/*
+/storage/logs/*
 .env
 .env.backup
 .env.production
