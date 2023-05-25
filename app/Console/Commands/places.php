@@ -26,7 +26,7 @@ class places extends Command
      */
     public function handle()
     {
-        if ($this->arguments('command') == 'add' && isset($this->arguments('value'))) {
+        if ($this->arguments('command') == 'add' && !is_null($this->arguments('value'))) {
             $place = new Place();
             $place->name = substr($this->arguments('value'), 0, 16);
             $place->user = 0;
