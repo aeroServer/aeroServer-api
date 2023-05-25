@@ -18,13 +18,13 @@ class PictureController extends Controller
     {
         // La validation de données
         $this->validate($request, [
-            'place' => 'required|max:100',
+            'place' => ['required', 'max:100', new ValidPlaces],
         ]);
 
         $start = (isset($request->start)) ? strtotime($request->start) : strtotime(date('Y-m-d 00:00:00'));
         $end = (isset($request->end)) ? strtotime($request->end) : strtotime(date('Y-m-d 23:59:59'));
 
-        return response()->json(Picture::where('place', $request->place)->where('date', '>=', $start)->where('date', '<=', $end)->orderBy('date', 'ASC')->get(), 200);
+        return response()->json(Picture::where('place', Place::where('name', $request->place)->first()->id)->where('date', '>=', $start)->where('date', '<=', $end)->orderBy('date', 'ASC')->get(), 200);
 
     }
 
