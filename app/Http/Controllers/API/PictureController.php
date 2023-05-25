@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Picture;
+use App\Models\Place;
 use Illuminate\Http\Request;
 use App\Rules\ValidPlaces;
 
@@ -39,7 +40,7 @@ class PictureController extends Controller
         ]);
 
         $picture = Picture::create([
-            'place' => $request->place,
+            'place' => Place::where('name', $request->place)->first()->id,
             'date' => strtotime($request->date),
             'info' => []
         ]);
