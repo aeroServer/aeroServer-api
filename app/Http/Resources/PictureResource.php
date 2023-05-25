@@ -14,7 +14,7 @@ class PictureResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        var_dump($request);
+        var_dump($this);
         exit();
         return parent::toArray($request);
     }
