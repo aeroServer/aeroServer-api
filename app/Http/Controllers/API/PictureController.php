@@ -8,6 +8,7 @@ use App\Models\Picture;
 use App\Models\Place;
 use Illuminate\Http\Request;
 use App\Rules\ValidPlaces;
+use App\Http\Resources\PictureResource;
 
 class PictureController extends Controller
 {
@@ -55,7 +56,7 @@ class PictureController extends Controller
      */
     public function show(Picture $picture)
     {
-        //
+        return new PictureResource($picture);
     }
 
     /**
