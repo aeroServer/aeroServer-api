@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Place;
 
 class Picture extends Model
 {
@@ -32,5 +33,10 @@ class Picture extends Model
     public function getFilenameAttribute()
     {
         return date('Y_m_d_His', $this->date).'.jpg';
+    }
+
+    public function getPlaceNameAttribute()
+    {
+        return Place::find($this->place)->name;
     }
 }

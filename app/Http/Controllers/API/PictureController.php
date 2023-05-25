@@ -46,7 +46,7 @@ class PictureController extends Controller
             'info' => []
         ]);
 
-        Storage::putFileAs($picture->place, $request->file('picture'), $picture->filename);
+        Storage::putFileAs($picture->place_name, $request->file('picture'), $picture->filename);
 
         return response()->json($picture, 201);
     }

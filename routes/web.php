@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
+use App\Models\Picture;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/picture/{picture}', function(Picture $picture) {
+    return response()->file(Storage::get($picture->place_name.'/'.$picture->filename), ['Content-Type' => 'image/jpeg']);
+})
