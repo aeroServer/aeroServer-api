@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Picture;
 use Illuminate\Http\Request;
+use App\Rules\ValidPlaces;
 
 class PictureController extends Controller
 {
@@ -32,7 +33,7 @@ class PictureController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'place' => 'required|max:100',
+            'place' => ['required', 'max:100', new ValidPlaces],
             'date'  => 'required|string|size:19',
             'picture' => 'required|image|mimes:jpg',
         ]);
