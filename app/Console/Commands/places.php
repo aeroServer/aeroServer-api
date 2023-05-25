@@ -12,7 +12,7 @@ class places extends Command
      *
      * @var string
      */
-    protected $signature = 'places {command} {?value}';
+    protected $signature = 'places {commandType} {valueType?}';
 
     /**
      * The console command description.
@@ -26,12 +26,21 @@ class places extends Command
      */
     public function handle()
     {
-        if ($this->arguments('command') == 'add' && !is_null($this->arguments('value'))) {
+        //dd($this->argument('valueType'));
+        if ($this->argument('commandType') == 'add' && !is_null($this->argument('valueType'))) {
             $place = new Place();
-            $place->name = substr($this->arguments('value'), 0, 16);
+            $place->name = substr($this->argument('valueType'), 0, 16);
             $place->user = 0;
+            $place->info = [];
             $place->save();
             $this->info("L'emplacement ".$place->name." a été ajouté.");
+        }
+
+        if ($this->argument('commandType') == 'list') {
+            $places = Place::all();
+            foreach ($places as $place) {
+                $this->info($place->id.' : '.$place->name);
+            }
         }
     }
 }
