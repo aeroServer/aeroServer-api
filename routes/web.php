@@ -20,5 +20,6 @@ Route::get('/', function () {
 });
 
 Route::get('/picture/{picture}', function(Picture $picture) {
+    dd($picture->place_name.'/'.$picture->filename);
     return response()->file(Storage::get($picture->place_name.'/'.$picture->filename), ['Content-Type' => 'image/jpeg']);
 });
