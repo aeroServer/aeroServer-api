@@ -17,7 +17,7 @@ use App\Models\Place;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('picture');
 });
 
 Route::get('/picture/{picture}', function(Picture $picture) {
