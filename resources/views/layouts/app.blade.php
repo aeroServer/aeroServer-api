@@ -11,15 +11,12 @@
 <body>
   <!-- Header -->
     <header class="container">
+
       <nav>
         <ul>
           <li><strong>Aero Server</strong></li>
         </ul>
-        <ul>
-          <li><a href="#">Link</a></li>
-          <li><a href="#">Link</a></li>
-          <li><a href="#" role="button">Button</a></li>
-        </ul>
+        @include('layouts.menu')
       </nav>
     </header>
     <!-- ./ Header -->
