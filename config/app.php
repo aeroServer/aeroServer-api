@@ -20,6 +20,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Application Version
+    |--------------------------------------------------------------------------
+    |
+    | This value determines the "version" your application is currently running
+    | in. You may want to follow the "Semantic Versioning" - Given a version
+    | number MAJOR.MINOR.PATCH when an update happens: https://semver.org.
+    |
+    */
+
+    'version' => env('git.version'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Environment
     |--------------------------------------------------------------------------
     |

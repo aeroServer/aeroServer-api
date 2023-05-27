@@ -1,4 +1,4 @@
 @extends('layouts.app')
 @section('content')
-	hello world
+	<img src="/picture/place/LFCT">
 @endsection
