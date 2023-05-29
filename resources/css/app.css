@@ -6,3 +6,16 @@ header {
 main {
 	padding: 0 0 !important;
 }
+
+#fullPicture {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background-color: black;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}

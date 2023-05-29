@@ -27,47 +27,8 @@
     </main>
     <!-- ./ Main -->
 
-    <!-- Footer -->
-    <footer class="container">
-      <small
-        >{{ config('app.name', 'Laravel') }} {{ config('app.version') }} -- Built with <a href="https://picocss.com">Pico</a> •
-        <a href="https://github.com/picocss/examples/blob/master/v1-preview/index.html"
-          >Source code</a
-        ></small
-      >
-    </footer>
-    <!-- ./ Footer -->
-
-    <!-- Modal example -->
-    <dialog id="modal-example">
-      <article>
-        <a
-          href="#close"
-          aria-label="Close"
-          class="close"
-          data-target="modal-example"
-          onclick="toggleModal(event)"
-        ></a>
-        <h3>Confirm your action!</h3>
-        <p>
-          Cras sit amet maximus risus. Pellentesque sodales odio sit amet augue finibus
-          pellentesque. Nullam finibus risus non semper euismod.
-        </p>
-        <footer>
-          <a
-            href="#cancel"
-            role="button"
-            class="secondary"
-            data-target="modal-example"
-            onclick="toggleModal(event)"
-            >Cancel</a
-          ><a href="#confirm" role="button" data-target="modal-example" onclick="toggleModal(event)"
-            >Confirm</a
-          >
-        </footer>
-      </article>
-    </dialog>
-    <!-- ./ Modal example -->
+    @include('layouts.footer')
+    
 </div>
 </body>
 </html>
