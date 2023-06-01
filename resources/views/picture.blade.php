@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-	<img id="lastPicture" onclick="displayFullPicture(this.src)" style="cursor: zoom-in;" src="/picture/place/LFCT">
+	<img id="lastPicture" onclick="displayFullPicture(this.src)" style="cursor: zoom-in;" src="">
 	<script type="text/javascript">
 		setTimeout(() => {
 		  location.reload();
