@@ -17,7 +17,7 @@
     function selectPlace(place)
     {
         var elem = document.querySelector('#lastPicture');
-        elem.src = "/picture/place/"+place;
+        elem.src = "/picture/place/"+place+"?t={{ time() }}";
     }
     @foreach(App\Models\Place::all() as $place)
     @if($loop->first)
